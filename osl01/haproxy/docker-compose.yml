@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  public_proxy:
+    image: haproxy
+    container_name: public_proxy
+    ports:
+      - 80:80
+      - 1936:1936
+    extra_hosts:
+      - "ci.osl.internal:10.1.0.5"
+    volumes:
+      - ./resources/etc/haproxy:/usr/local/etc/haproxy:ro
+    networks:
+      - public_proxy
+
+networks:
+  public_proxy:
+    name: public_proxy
+    external: true

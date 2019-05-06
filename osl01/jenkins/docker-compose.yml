@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  jenkins:
+    image: jenkins/jenkins
+    container_name: jenkins
+    ports:
+      - 8010:8080
+    volumes:
+      - jenkins:/var/jenkins_home
+    networks:
+      - public_proxy
+
+volumes:
+  jenkins:
+    name: jenkins
+    external: true
+
+networks:
+  public_proxy:
+    name: public_proxy
+    external: true
