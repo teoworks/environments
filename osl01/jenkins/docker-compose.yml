@@ -8,8 +8,12 @@ services:
       - 8010:8080
     volumes:
       - jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./resources/entrypoint.sh:/entrypoint.sh
     networks:
       - public_proxy
+    user: root
+    entrypoint: /entrypoint.sh
 
 volumes:
   jenkins:
