@@ -2,18 +2,15 @@ version: '3.7'
 
 services:
   jenkins:
-    image: jenkins/jenkins
+    image: teoware/jenkins
     container_name: jenkins
     ports:
       - 8010:8080
     volumes:
       - jenkins:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./resources/entrypoint.sh:/entrypoint.sh
     networks:
       - public_proxy
-    user: root
-    entrypoint: /entrypoint.sh
 
 volumes:
   jenkins:
