@@ -20,7 +20,6 @@ services:
     environment:
       - REGISTRY_HOST=docker.osl.teoworks.com
       - REGISTRY_DOMAIN=docker.osl.teoworks.com
-      - REGISTRY_SSL=true
     networks:
       - docker_registry
 
