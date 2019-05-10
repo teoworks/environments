@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  dashboard:
+    image: node:10-slim
+    container_name: dashboard
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_PUBLIC_HOST=osl.teoworks.com
+      - APP_HOME=/usr/local/src/dashboard
+    volumes:
+      - ./resources/entrypoint.sh:/entrypoint.sh
+      - ./resources/dashboard:/usr/local/src/dashboard
+    networks:
+      - public_proxy
+    entrypoint: /entrypoint.sh
+
+networks:
+  public_proxy:
+    name: public_proxy
+    external: true
