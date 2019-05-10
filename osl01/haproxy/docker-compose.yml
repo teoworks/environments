@@ -8,7 +8,7 @@ services:
       - 80:80
       - 1936:1936
     extra_hosts:
-      - "osl.internal:10.1.0.5"
+      - "osl.teoworks.internal:10.1.0.5"
     volumes:
       - ./resources/etc/haproxy:/usr/local/etc/haproxy:ro
     networks:

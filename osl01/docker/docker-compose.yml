@@ -9,7 +9,20 @@ services:
     volumes:
       - registry:/var/lib/registry
     networks:
+      - docker_registry
       - public_proxy
+
+  docker_registry_ui:
+    image: jc21/registry-ui
+    container_name: docker_registry_ui
+    ports:
+      - 8020:80
+    environment:
+      - REGISTRY_HOST=docker.osl.teoworks.com
+      - REGISTRY_DOMAIN=docker.osl.teoworks.com
+      - REGISTRY_SSL=true
+    networks:
+      - docker_registry
 
 volumes:
   registry:
@@ -17,6 +30,8 @@ volumes:
     external: true
 
 networks:
+  docker_registry:
+    name: docker_registry
   public_proxy:
     name: public_proxy
     external: true
