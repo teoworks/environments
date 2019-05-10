@@ -40,6 +40,7 @@ jsconfig.json
 node_modules/
 build/
 dist/
+package-lock.json
 yarn.lock
 
 Session.vim

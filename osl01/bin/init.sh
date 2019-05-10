@@ -3,12 +3,15 @@
 set -e
 
 NETWORKS=(
-   "public_proxy"
+    "public_proxy"
+    "postgres"
+   	"kafka"
 )
 
 VOLUMES=(
-	"jenkins"
-	"registry"
+    "jenkins"
+    "registry"
+    "postgres"
 )
 
 NETWORK_LABEL="com.teoworks.type=network"
