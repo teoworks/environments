@@ -4,6 +4,7 @@ services:
   postgres:
     image: postgres
     container_name: postgres
+    restart: unless-stopped
     environment:
       - POSTGRES_PASSWORD=OKdxGRE2BFR7
     ports:

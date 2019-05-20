@@ -4,6 +4,7 @@ services:
   dashboard:
     image: node:10-slim
     container_name: dashboard
+    restart: unless-stopped
     ports:
       - 3000:3000
     environment:

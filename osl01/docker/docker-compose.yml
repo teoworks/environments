@@ -4,6 +4,7 @@ services:
   docker_registry:
     image: registry:2
     container_name: docker_registry
+    restart: unless-stopped
     ports:
       - 5000:5000
     volumes:
@@ -15,6 +16,9 @@ services:
   docker_registry_ui:
     image: jc21/registry-ui
     container_name: docker_registry_ui
+    restart: unless-stopped
+    depends_on:
+      - docker_registry
     ports:
       - 8020:80
     environment:
