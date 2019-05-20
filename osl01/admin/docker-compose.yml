@@ -1,16 +1,9 @@
 version: '3.7'
 
 services:
-  public_proxy:
+  admin:
     image: ubuntu
-    container_name: admin_ubuntu
+    container_name: admin
     extra_hosts:
       - "ci.osl.internal:10.1.0.5"
-    networks:
-      - public_proxy
     command: tail -f /var/log/faillog
-
-networks:
-  public_proxy:
-    name: public_proxy
-    external: true

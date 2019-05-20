@@ -1,9 +1,9 @@
 version: '3.7'
 
 services:
-  public_proxy:
+  haproxy:
     image: haproxy
-    container_name: public_proxy
+    container_name: haproxy
     restart: unless-stopped
     ports:
       - 80:80
@@ -13,9 +13,9 @@ services:
     volumes:
       - ./resources/etc/haproxy:/usr/local/etc/haproxy:ro
     networks:
-      - public_proxy
+      - haproxy
 
 networks:
-  public_proxy:
-    name: public_proxy
+  haproxy:
+    name: haproxy
     external: true

@@ -11,7 +11,7 @@ services:
       - jenkins:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - public_proxy
+      - jenkins
 
 volumes:
   jenkins:
@@ -19,6 +19,6 @@ volumes:
     external: true
 
 networks:
-  public_proxy:
-    name: public_proxy
+  jenkins:
+    name: jenkins
     external: true
