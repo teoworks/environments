@@ -12,6 +12,7 @@ VOLUMES=(
     "jenkins"
     "registry"
     "postgres"
+    "portainer"
 )
 
 NETWORK_LABEL="com.teoworks.type=network"

@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - 9000:9000
+    volumes:
+      - portainer:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - docker_registry
+      - public_proxy
+
+volumes:
+  portainer:
+    name: portainer
+    external: true
+
+networks:
+  public_proxy:
+    name: public_proxy
+    external: true
