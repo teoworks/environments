@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+  customers:
+    image: docker.osl.teoworks.com/acntech/event-notification-customers
+    container_name: event-notification-customers
+    environment:
+      - SPRING_PROFILES_ACTIVE=development,teoworks
+    ports:
+      - 9000:9000

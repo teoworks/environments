@@ -19,6 +19,7 @@ services:
   zookeeper:
     image: acntechie/zookeeper
     container_name: zookeeper
+    restart: unless-stopped
     environment:
       - ZOOKEEPER_ID=1
       - ZOOKEEPER_HOSTS=zookeeper:2888:3888
