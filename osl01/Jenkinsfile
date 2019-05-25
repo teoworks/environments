@@ -1,0 +1,20 @@
+#!/usr/bin/env groovy
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Reload Dashboard') {
+            steps {
+                echo 'Stopping Dashboard Docker container'
+                sh 'docker-compose -f ./osl01/dashboard/docker-compose.yml stop'
+
+                echo 'Pulling latest Docker images'
+                sh 'docker-compose -f ./osl01/dashboard/docker-compose.yml pull'
+
+                echo 'Starting Dashboard Docker container'
+                sh 'docker-compose -f ./osl01/dashboard/docker-compose.yml up -d'
+            }
+        }
+    }
+}
