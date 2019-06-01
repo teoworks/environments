@@ -4,6 +4,16 @@ pipeline {
     agent any
 
     stages {
+        stage('Build Dashboard') {
+            steps {
+                echo 'Building Dashboard Docker container'
+                sh 'docker-compose -f ./osl01/dashboard/docker-compose.yml build'
+
+                echo 'Pulling latest Docker images'
+                sh 'docker-compose -f ./osl01/dashboard/docker-compose.yml push'
+            }
+        }
+
         stage('Reload Dashboard') {
             steps {
                 echo 'Stopping Dashboard Docker container'

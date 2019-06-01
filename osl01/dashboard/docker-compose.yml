@@ -2,7 +2,8 @@ version: '3.7'
 
 services:
   dashboard:
-    image: node:10-slim
+    image: docker.osl.teoworks.com/teoworks/dashboard:latest
+    build: .
     container_name: dashboard
     restart: unless-stopped
     ports:
@@ -10,7 +11,3 @@ services:
     environment:
       - NODE_PUBLIC_HOST=osl.teoworks.com
       - APP_HOME=/usr/local/src/dashboard
-    volumes:
-      - ./resources/entrypoint.sh:/entrypoint.sh
-      - ./resources/dashboard:/usr/local/src/dashboard
-    entrypoint: /entrypoint.sh
