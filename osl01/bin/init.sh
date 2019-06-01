@@ -6,6 +6,7 @@ NETWORKS=(
     "haproxy"
     "docker"
     "postgres"
+    "oracle-xe"
     "jenkins"
    	"kafka"
 )
@@ -14,6 +15,7 @@ VOLUMES=(
     "haproxy"
     "docker"
     "postgres"
+    "oracle-xe"
     "jenkins"
     "portainer"
     "kafka"

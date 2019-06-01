@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  oracle-xe:
+    image: docker.osl.teoworks.com/acntech/oracle-xe
+    container_name: oracle-xe
+    restart: unless-stopped
+    ports:
+      - 1521:1521
+    volumes:
+      - oracle-xe:/opt/oracle/oradata
+    networks:
+      - oracle-xe
+
+volumes:
+  oracle-xe:
+    name: oracle-xe
+    external: true
+
+networks:
+  oracle-xe:
+    name: oracle-xe
+    external: true
