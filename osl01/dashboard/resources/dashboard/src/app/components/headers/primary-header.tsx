@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component, ReactNode } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Header, Icon, Segment } from 'semantic-ui-react';
+import { Header, Segment } from 'semantic-ui-react';
 import { RootState } from '../../models';
 
 interface ComponentStateProps {
@@ -37,15 +37,11 @@ class PrimaryHeaderComponent extends Component<ComponentProps, ComponentState> {
 
         return (
             <Segment basic className="primary-header">
-                <Header as='h1' floated='left' className="primary-header-title">
+                <Header as='h2' className="primary-header-title">
                     <Header.Content>
                         <Link to="/">
-                            <Icon name='cogs' />{headerTitle}
+                            {headerTitle}
                         </Link>
-                    </Header.Content>
-                </Header>
-                <Header as='h3' floated='right' className="primary-header-login">
-                    <Header.Content>
                     </Header.Content>
                 </Header>
             </Segment>
@@ -54,7 +50,7 @@ class PrimaryHeaderComponent extends Component<ComponentProps, ComponentState> {
 
     private browserTitle = (): string => {
         const {title, subtitle} = this.props;
-        const formattedHeaderTitle = title ? title : 'TeoWorks OSL Dashboard';
+        const formattedHeaderTitle = title ? title : 'teoworks - Dashboard';
         if (subtitle) {
             return `${subtitle} - ${formattedHeaderTitle}`;
         } else {
@@ -64,7 +60,7 @@ class PrimaryHeaderComponent extends Component<ComponentProps, ComponentState> {
 
     private headerTitle = (): string => {
         const {title, subtitle} = this.props;
-        const formattedHeaderTitle = title ? title : 'TeoWorks OSL Dashboard';
+        const formattedHeaderTitle = title ? title : 'teoworks - Dashboard';
         if (subtitle) {
             return `${formattedHeaderTitle} - ${subtitle}`;
         } else {

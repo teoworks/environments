@@ -1,0 +1,23 @@
+
+
+.ui.buttons {
+    margin-right: 1.1rem;
+}
+
+.table-header {
+    background-color: #f9fafb;
+    font-weight: 700;
+}
+
+.clickable-table-row {
+    cursor: pointer;
+}
+
+.loading-indicator {
+    margin-top: 2rem;
+}
+
+.loading-indicator-body {
+    padding: 2rem;
+    min-height: 200px;
+}

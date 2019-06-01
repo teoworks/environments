@@ -1,7 +1,7 @@
 {
-    "name": "ordering-gui",
+    "name": "teoworks-dashboard",
     "version": "1.0.0",
-    "description": "TeoWorks OSL Dashboard",
+    "description": "teoworks Dashboard",
     "author": "Thomas Johansen <thomas@teoworks.com>",
     "license": "Apache-2.0",
     "private": true,
@@ -66,6 +66,7 @@
         "multer": "^1.4.1",
         "postcss-flexbugs-fixes": "^4.1.0",
         "postcss-loader": "^3.0.0",
+        "redux-devtools-extension": "^2.13.8",
         "source-map-loader": "^0.2.4",
         "style-loader": "^0.23.0",
         "ts-loader": "^5.0.0",
