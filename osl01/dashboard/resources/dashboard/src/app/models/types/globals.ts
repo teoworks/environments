@@ -1,7 +1,8 @@
-import { ActionType, EntityType, NotificationState } from '../';
+import { ActionType, DockerState, EntityType, NotificationState } from '../';
 
 export interface RootState {
     notificationState: NotificationState;
+    dockerState: DockerState;
 }
 
 export interface Error {
@@ -36,3 +37,9 @@ export interface FormData {
     formError: boolean;
     formErrorMessage?: string;
 }
+
+export const unknownError = {
+    data: {
+        message: 'Unknown error occurred'
+    }
+};

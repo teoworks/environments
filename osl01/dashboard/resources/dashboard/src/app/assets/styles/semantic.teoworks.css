@@ -30,3 +30,7 @@ html, body {
 .ui.segment.main-content {
     margin: 0 10%;
 }
+
+.ui.buttons {
+    margin-right: 1.1rem;
+}

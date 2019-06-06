@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  haproxy:
+    image: haproxy
+    container_name: haproxy
+    ports:
+      - 80:80
+      - 1936:1936
+    volumes:
+      - ./resources/etc/haproxy:/usr/local/etc/haproxy:ro
+      - /dev/log:/dev/log

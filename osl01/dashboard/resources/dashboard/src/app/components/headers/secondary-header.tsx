@@ -13,7 +13,7 @@ interface ComponentProps {
 class SecondaryHeaderComponent extends Component<ComponentProps> {
 
     public render(): ReactNode {
-        const {title, subtitle, children} = this.props;
+        const { title, subtitle, children } = this.props;
 
         return (
             <Segment basic className="secondary-header">
@@ -31,14 +31,18 @@ interface HeaderFragmentProps {
 }
 
 const HeaderFragment: FunctionComponent<HeaderFragmentProps> = (props) => {
-    const {title, subtitle, children} = props;
+    const { title, subtitle, children } = props;
 
-    return (
-        <Segment basic>
-            <Header as='h2' floated='left'>{children ? children : title}</Header>
-            {subtitle ? <Header.Subheader>{subtitle}</Header.Subheader> : null}
-        </Segment>
-    );
+    if (title || subtitle || children) {
+        return (
+            <Segment basic>
+                <Header as='h2' floated='left'>{children ? children : title}</Header>
+                {subtitle ? <Header.Subheader>{subtitle}</Header.Subheader> : null}
+            </Segment>
+        );
+    } else {
+        return null;
+    }
 };
 
 export { SecondaryHeaderComponent as SecondaryHeader };

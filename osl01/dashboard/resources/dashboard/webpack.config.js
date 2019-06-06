@@ -95,13 +95,19 @@ module.exports = {
         historyApiFallback: true,
         public: devServerHost,
         proxy: {
+            '/v1.39': {
+                target: 'http://docker.osl.teoworks.com',
+                headers: {
+                    'Host': 'docker.osl.teoworks.com'
+                }
+            }
         },
         open: false
     },
     plugins: [
         new webpack.EnvironmentPlugin({
             NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
-            DEBUG: false
+            DEBUG: true
         }),
         new webpack.HotModuleReplacementPlugin(),
         new WebpackCleanupPlugin(),

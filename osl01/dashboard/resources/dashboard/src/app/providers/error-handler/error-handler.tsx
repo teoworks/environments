@@ -3,6 +3,7 @@ import { Component, ErrorInfo, ReactNode } from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 
 import { UnknownErrorContainer } from '../../containers';
+import { unknownError } from "../../models";
 
 interface ComponentProps {
 }
@@ -38,5 +39,10 @@ class ErrorHandlerProvider extends Component<ComponentProps, ComponentState> {
         }
     }
 }
+
+export const handleError = (error: any): string => {
+    const { data } = error.response ? error.response : unknownError;
+    return data.message;
+};
 
 export { ErrorHandlerProvider };

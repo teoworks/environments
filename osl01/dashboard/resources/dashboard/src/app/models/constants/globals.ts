@@ -1,4 +1,5 @@
 export enum EntityType {
+    CONTAINERS
 }
 
 export enum ActionType {
