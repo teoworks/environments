@@ -1,7 +1,6 @@
 import { SemanticCOLORS } from "semantic-ui-react";
 
 export interface ToolInfo {
-    order: number;
     name: string;
     title: string;
     image: any;
@@ -15,8 +14,12 @@ export interface ToolLink {
     external?: boolean;
 }
 
-export interface ToolOverview extends ToolInfo {
+export interface DockerInfo {
+    name: string;
     stateColor: SemanticCOLORS;
     stateText: string;
     statusText: string;
+}
+
+export interface ToolOverview extends ToolInfo, DockerInfo {
 }

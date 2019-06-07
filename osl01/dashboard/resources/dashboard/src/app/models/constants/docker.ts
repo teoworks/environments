@@ -1,6 +1,8 @@
 export enum ContainerState {
     RUNNING = 'running',
-    STOPPED = 'stopped'
+    STOPPED = 'stopped',
+    UNKNOWN = 'unknown'
+
 }
 
 export enum FindDockerContainersActionType {
