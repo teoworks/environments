@@ -1,0 +1,28 @@
+version: '3.5'
+
+services:
+  keycloak:
+    image: jboss/keycloak
+    container_name: keycloak
+    restart: unless-stopped
+    ports:
+      - 8050:8080
+    environment:
+      - KEYCLOAK_USER=teoflex
+      - KEYCLOAK_PASSWORD=qC586jVUPL8r
+      - DB_VENDOR=postgres
+      - DB_ADDR=postgres
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_PASSWORD=6CgR8n4wc0Pn
+    networks:
+      - keycloak
+      - postgres
+
+networks:
+  keycloak:
+    name: keycloak
+    external: true
+  postgres:
+    name: postgres
+    external: true

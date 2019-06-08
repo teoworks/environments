@@ -1,4 +1,6 @@
 import { DockerContainer, DockerInfo, ToolInfo } from "../../models/types";
+import openLdapLogo from "../../assets/images/openldap-logo.png";
+import keycloakLogo from "../../assets/images/keycloak-logo.png";
 import haproxyLogo from "../../assets/images/haproxy-logo.png";
 import jenkinsLogo from "../../assets/images/jenkins-logo.png";
 import dockerLogo from "../../assets/images/docker-logo.png";
@@ -19,6 +21,25 @@ export const toolInfoList: ToolInfo[] = [
                 title: 'osl.teoworks.com/monitoring',
                 href: 'http://osl.teoworks.com/monitoring',
                 external: true
+            }
+        ]
+    },
+    {
+        name: 'ldap',
+        title: 'OpenLDAP',
+        image: openLdapLogo,
+        links: [
+            {
+                label: 'Host',
+                title: 'ldap.osl.teoworks.com',
+            },
+            {
+                label: 'Port',
+                title: '389',
+            },
+            {
+                label: 'TLS Port',
+                title: '636',
             }
         ]
     },
@@ -104,6 +125,19 @@ export const toolInfoList: ToolInfo[] = [
             {
                 label: 'Port',
                 title: '9092',
+            }
+        ]
+    },
+    {
+        name: 'keycloak',
+        title: 'Keycloak',
+        image: keycloakLogo,
+        links: [
+            {
+                label: 'Keycloak',
+                title: 'keycloak.osl.teoworks.com',
+                href: 'http://keycloak.osl.teoworks.com',
+                external: true
             }
         ]
     }

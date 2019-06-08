@@ -3,15 +3,18 @@
 set -e
 
 NETWORKS=(
+    "ldap"
     "haproxy"
     "docker"
     "postgres"
     "oracle-xe"
     "jenkins"
    	"kafka"
+    "keycloak"
 )
 
 VOLUMES=(
+    "ldap"
     "haproxy"
     "docker"
     "postgres"
