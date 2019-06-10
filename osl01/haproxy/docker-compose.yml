@@ -7,6 +7,7 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
+      - 443:443
       - 1936:1936
     extra_hosts:
       - "osl.teoworks.internal:10.1.0.5"
