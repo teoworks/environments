@@ -16,7 +16,7 @@ class SecondaryHeaderComponent extends Component<ComponentProps> {
         const { title, subtitle, children } = this.props;
 
         return (
-            <Segment basic className="secondary-header">
+            <Segment basic className="main-segment secondary-header">
                 <HeaderFragment title={title} subtitle={subtitle} children={children} />
                 <Notifications />
             </Segment>

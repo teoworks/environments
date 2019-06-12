@@ -36,7 +36,7 @@ class PrimaryHeaderComponent extends Component<ComponentProps, ComponentState> {
         document.title = browserTitle;
 
         return (
-            <Segment basic className="primary-header">
+            <Segment basic className="main-segment primary-header">
                 <Header as='h2' className="primary-header-title">
                     <Header.Content>
                         <Link to="/">

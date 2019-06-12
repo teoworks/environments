@@ -141,7 +141,7 @@ export const toolInfoList: ToolInfo[] = [
             },
             {
                 label: 'Keycloak OIDC Config',
-                title: 'keycloak.osl.teoworks.com/auth/realms/teoworks/.well-known/openid-configuration',
+                title: '/auth/realms/teoworks/.well-known/openid-configuration',
                 href: 'http://keycloak.osl.teoworks.com/auth/realms/teoworks/.well-known/openid-configuration',
                 external: true
             }

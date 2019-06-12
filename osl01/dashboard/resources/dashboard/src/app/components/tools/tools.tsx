@@ -1,30 +1,50 @@
 import * as React from 'react';
 import { Component, ReactNode } from 'react';
-import { Card, Segment } from "semantic-ui-react";
-import { ContainerState, DockerContainer, ToolOverview } from "../../models";
-import { ToolCard } from "./tool";
-import { getDockerInfo, mapDockerInfo, toolInfoList } from "./tool-info";
+import { connect } from 'react-redux';
+import { Card, Segment } from 'semantic-ui-react';
+import { ContainerState, DockerContainer, DockerState, RootState, ToolOverview } from '../../models';
+import { findDockerContainers } from '../../state/actions';
+import { LoadingIndicator } from '../indicators';
+import { ToolCard } from './tool';
+import { getDockerInfo, mapDockerInfo, toolInfoList } from './tool-info';
 
-interface ComponentProps {
-    containers: DockerContainer[];
+interface ComponentStateProps {
+    dockerState: DockerState;
 }
+
+interface ComponentDispatchProps {
+    findDockerContainers: () => Promise<any>;
+}
+
+type ComponentProps = ComponentDispatchProps & ComponentStateProps;
 
 class ToolsOverviewComponent extends Component<ComponentProps> {
 
-    public render(): ReactNode {
-        const tools = this.getToolOverviewList();
-
-        return (
-            <Segment basic className='main-content'>
-                <Card.Group itemsPerRow={3}>
-                    {tools.map((tool, index) => <ToolCard key={index} tool={tool} />)}
-                </Card.Group>
-            </Segment>
-        );
+    public componentDidMount(): void {
+        this.props.findDockerContainers();
     }
 
-    private getToolOverviewList(): ToolOverview[] {
-        const { containers } = this.props;
+    public render(): ReactNode {
+        const {loading, containers} = this.props.dockerState;
+
+        if (loading) {
+            return (
+                <LoadingIndicator />
+            );
+        } else {
+            const tools = this.getToolOverviewList(containers);
+
+            return (
+                <Segment basic>
+                    <Card.Group itemsPerRow={5}>
+                        {tools.map((tool, index) => <ToolCard key={index} tool={tool} />)}
+                    </Card.Group>
+                </Segment>
+            );
+        }
+    }
+
+    private getToolOverviewList(containers: DockerContainer[]): ToolOverview[] {
         const dockerInfoList = containers.map(getDockerInfo);
 
         return toolInfoList.map(tool => {
@@ -35,9 +55,19 @@ class ToolsOverviewComponent extends Component<ComponentProps> {
             return {
                 ...tool,
                 ...dockerInfo
-            }
+            };
         });
     }
 }
 
-export { ToolsOverviewComponent as ToolsOverview };
+const mapStateToProps = (state: RootState): ComponentStateProps => ({
+    dockerState: state.dockerState
+});
+
+const mapDispatchToProps = (dispatch): ComponentDispatchProps => ({
+    findDockerContainers: () => dispatch(findDockerContainers())
+});
+
+const ConnectedToolsOverviewComponent = connect(mapStateToProps, mapDispatchToProps)(ToolsOverviewComponent);
+
+export { ConnectedToolsOverviewComponent as ToolsOverview };

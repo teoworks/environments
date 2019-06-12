@@ -27,10 +27,6 @@ html, body {
     color: #838383;
 }
 
-.ui.segment.main-content {
-    margin: 0 10%;
-}
-
 .ui.buttons {
     margin-right: 1.1rem;
 }
