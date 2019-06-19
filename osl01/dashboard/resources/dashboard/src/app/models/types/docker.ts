@@ -1,4 +1,4 @@
-import { ContainerState, Error, FindDockerContainersActionType, Modified } from "../";
+import { ContainerState, FindDockerContainersActionType, GlobalError, Modified } from '../';
 
 export interface DockerImage {
     id: string;
@@ -7,7 +7,7 @@ export interface DockerImage {
 
 export interface DockerContainer {
     id: string;
-    name: string;
+    names: string[];
     state: ContainerState;
     status: string;
     image: DockerImage;
@@ -25,7 +25,7 @@ export interface FindDockerContainer {
 export interface DockerState {
     loading: boolean;
     containers: DockerContainer[];
-    error?: Error;
+    error?: GlobalError;
     modified?: Modified;
 }
 

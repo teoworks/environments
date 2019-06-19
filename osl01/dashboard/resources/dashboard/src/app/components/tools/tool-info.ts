@@ -1,14 +1,14 @@
-import { DockerContainer, DockerInfo, ToolInfo } from "../../models/types";
-import openLdapLogo from "../../assets/images/openldap-logo.png";
-import keycloakLogo from "../../assets/images/keycloak-logo.png";
-import haproxyLogo from "../../assets/images/haproxy-logo.png";
-import jenkinsLogo from "../../assets/images/jenkins-logo.png";
-import dockerLogo from "../../assets/images/docker-logo.png";
-import postgresqlLogo from "../../assets/images/postgresql-logo.png";
-import oracleLogo from "../../assets/images/oracle-logo.png";
-import kafkaLogo from "../../assets/images/kafka-logo.png";
-import { ContainerState } from "../../models/constants";
-import { SemanticCOLORS } from "semantic-ui-react";
+import { SemanticCOLORS } from 'semantic-ui-react';
+import dockerLogo from '../../assets/images/docker-logo.png';
+import haproxyLogo from '../../assets/images/haproxy-logo.png';
+import jenkinsLogo from '../../assets/images/jenkins-logo.png';
+import kafkaLogo from '../../assets/images/kafka-logo.png';
+import keycloakLogo from '../../assets/images/keycloak-logo.png';
+import openLdapLogo from '../../assets/images/openldap-logo.png';
+import oracleLogo from '../../assets/images/oracle-logo.png';
+import postgresqlLogo from '../../assets/images/postgresql-logo.png';
+import { ContainerState } from '../../models/constants';
+import { DockerContainer, DockerInfo, ToolInfo } from '../../models/types';
 
 export const toolInfoList: ToolInfo[] = [
     {
@@ -31,15 +31,15 @@ export const toolInfoList: ToolInfo[] = [
         links: [
             {
                 label: 'Host',
-                title: 'ldap.osl.teoworks.com',
+                title: 'ldap.osl.teoworks.com'
             },
             {
                 label: 'Port',
-                title: '389',
+                title: '389'
             },
             {
                 label: 'TLS Port',
-                title: '636',
+                title: '636'
             }
         ]
     },
@@ -82,15 +82,15 @@ export const toolInfoList: ToolInfo[] = [
         links: [
             {
                 label: 'Host',
-                title: 'postgres.osl.teoworks.com',
+                title: 'postgres.osl.teoworks.com'
             },
             {
                 label: 'Port',
-                title: '5432',
+                title: '5432'
             },
             {
                 label: 'URL',
-                title: 'jdbc:postgresql://[Host]:[Port]/[Database]',
+                title: 'jdbc:postgresql://postgres.osl.teoworks.com:5432/[Database]'
             }
         ]
     },
@@ -101,15 +101,15 @@ export const toolInfoList: ToolInfo[] = [
         links: [
             {
                 label: 'Host',
-                title: 'oracle.osl.teoworks.com',
+                title: 'oracle.osl.teoworks.com'
             },
             {
                 label: 'Port',
-                title: '1521',
+                title: '1521'
             },
             {
                 label: 'URL',
-                title: 'jdbc:oracle:thin:@[Host]:[Port]:XE',
+                title: 'jdbc:oracle:thin:@oracle.osl.teoworks.com:1521:XE'
             }
         ]
     },
@@ -120,11 +120,11 @@ export const toolInfoList: ToolInfo[] = [
         links: [
             {
                 label: 'Host',
-                title: 'kafka.osl.teoworks.com',
+                title: 'kafka.osl.teoworks.com'
             },
             {
                 label: 'Port',
-                title: '9092',
+                title: '9092'
             }
         ]
     },
@@ -141,7 +141,7 @@ export const toolInfoList: ToolInfo[] = [
             },
             {
                 label: 'Keycloak OIDC Config',
-                title: '/auth/realms/teoworks/.well-known/openid-configuration',
+                title: 'keycloak.osl.teoworks.com/auth/realms/teoworks/.well-known/openid-configuration',
                 href: 'http://keycloak.osl.teoworks.com/auth/realms/teoworks/.well-known/openid-configuration',
                 external: true
             }
@@ -150,7 +150,8 @@ export const toolInfoList: ToolInfo[] = [
 ];
 
 export const getDockerInfo = (container: DockerContainer): DockerInfo => {
-    const { name, state, status } = container;
+    const { names, state, status } = container;
+    const name = names[0];
 
     if (state === ContainerState.RUNNING) {
         return mapDockerInfo(name, state, 'green', status);

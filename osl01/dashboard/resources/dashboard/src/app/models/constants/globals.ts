@@ -1,5 +1,6 @@
 export enum EntityType {
-    CONTAINERS
+    CONTAINERS,
+    UNKNOWN
 }
 
 export enum ActionType {
@@ -7,5 +8,6 @@ export enum ActionType {
     FIND = 'FIND',
     CREATE = 'CREATE',
     UPDATE = 'UPDATE',
-    DELETE = 'DELETE'
+    DELETE = 'DELETE',
+    NONE = 'NONE'
 }

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Component, ReactNode } from 'react';
 import { Segment, Tab } from 'semantic-ui-react';
-import { ToolsOverview } from '../tools';
+import { Tools } from '../tools';
 
 const panes = [
-    {menuItem: 'Tools', render: () => <ToolsOverview />}
+    { menuItem: 'Tools', render: () => <Tools /> }
 ];
 
 class TabsComponent extends Component {

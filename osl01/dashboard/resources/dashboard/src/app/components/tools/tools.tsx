@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Component, ReactNode } from 'react';
 import { connect } from 'react-redux';
-import { Card, Segment } from 'semantic-ui-react';
+import { Item, Segment } from 'semantic-ui-react';
 import { ContainerState, DockerContainer, DockerState, RootState, ToolOverview } from '../../models';
 import { findDockerContainers } from '../../state/actions';
 import { LoadingIndicator } from '../indicators';
-import { ToolCard } from './tool';
+import { Tool } from './tool';
 import { getDockerInfo, mapDockerInfo, toolInfoList } from './tool-info';
 
 interface ComponentStateProps {
@@ -18,14 +18,14 @@ interface ComponentDispatchProps {
 
 type ComponentProps = ComponentDispatchProps & ComponentStateProps;
 
-class ToolsOverviewComponent extends Component<ComponentProps> {
+class ToolsComponent extends Component<ComponentProps> {
 
     public componentDidMount(): void {
         this.props.findDockerContainers();
     }
 
     public render(): ReactNode {
-        const {loading, containers} = this.props.dockerState;
+        const { loading, containers } = this.props.dockerState;
 
         if (loading) {
             return (
@@ -35,10 +35,10 @@ class ToolsOverviewComponent extends Component<ComponentProps> {
             const tools = this.getToolOverviewList(containers);
 
             return (
-                <Segment basic>
-                    <Card.Group itemsPerRow={5}>
-                        {tools.map((tool, index) => <ToolCard key={index} tool={tool} />)}
-                    </Card.Group>
+                <Segment basic className="tools-segment">
+                    <Item.Group>
+                        {tools.map((tool, index) => <Tool key={index} tool={tool} />)}
+                    </Item.Group>
                 </Segment>
             );
         }
@@ -68,6 +68,6 @@ const mapDispatchToProps = (dispatch): ComponentDispatchProps => ({
     findDockerContainers: () => dispatch(findDockerContainers())
 });
 
-const ConnectedToolsOverviewComponent = connect(mapStateToProps, mapDispatchToProps)(ToolsOverviewComponent);
+const ConnectedToolsComponent = connect(mapStateToProps, mapDispatchToProps)(ToolsComponent);
 
-export { ConnectedToolsOverviewComponent as ToolsOverview };
+export { ConnectedToolsComponent as Tools };

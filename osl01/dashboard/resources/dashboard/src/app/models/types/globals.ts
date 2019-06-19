@@ -5,14 +5,14 @@ export interface RootState {
     dockerState: DockerState;
 }
 
-export interface Error {
+export interface GlobalError {
     entityType: EntityType;
     actionType: ActionType;
     timestamp: string;
-    status: number;
+    status?: number;
     error: string;
     message: string;
-    path: string;
+    path?: string;
 }
 
 export interface Modified {
@@ -37,9 +37,3 @@ export interface FormData {
     formError: boolean;
     formErrorMessage?: string;
 }
-
-export const unknownError = {
-    data: {
-        message: 'Unknown error occurred'
-    }
-};

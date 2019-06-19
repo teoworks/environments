@@ -1,9 +1,10 @@
+import * as moment from 'moment';
 import * as React from 'react';
 import { Component, ErrorInfo, ReactNode } from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 
 import { UnknownErrorContainer } from '../../containers';
-import { unknownError } from '../../models';
+import { ActionType, EntityType, GlobalError } from '../../models';
 
 interface ComponentProps {
 }
@@ -20,6 +21,12 @@ class ErrorHandlerProvider extends Component<ComponentProps, ComponentState> {
     }
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+        console.log('###################################################################');
+        console.log('#                                                                 #');
+        console.log('#                             ERROR                               #');
+        console.log('#                                                                 #');
+        console.log('###################################################################');
+
         this.setState({hasError: true});
     }
 
@@ -28,12 +35,6 @@ class ErrorHandlerProvider extends Component<ComponentProps, ComponentState> {
         const {children} = this.props;
 
         if (hasError) {
-            console.log('###################################################################');
-            console.log('#                                                                 #');
-            console.log('#                             ERROR                               #');
-            console.log('#                                                                 #');
-            console.log('###################################################################');
-
             return (
                 <Container>
                     <Segment vertical>
@@ -47,9 +48,24 @@ class ErrorHandlerProvider extends Component<ComponentProps, ComponentState> {
     }
 }
 
+const unknownError = {
+    error: 'Unknown error',
+    message: 'Unknown error occurred'
+};
+
 export const handleError = (error: any): string => {
-    const {data} = error.response ? error.response : unknownError;
+    const {data} = error && error.response ? error.response : {data: unknownError};
     return data.message;
+};
+
+export const handlerError = (error: any, entityType: EntityType = EntityType.UNKNOWN, actionType: ActionType = ActionType.NONE): GlobalError => {
+    const {data} = error && error.response && error.response.data ? error.response : {data: {...unknownError, timestamp: moment().format()}};
+
+    return {
+        ...data,
+        entityType,
+        actionType
+    };
 };
 
 export { ErrorHandlerProvider };

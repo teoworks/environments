@@ -1,63 +1,69 @@
 import * as React from 'react';
 import { Component, ReactNode } from 'react';
-import { Card, Divider, Image, Label, List } from "semantic-ui-react";
-import { ToolOverview } from "../../models";
+import { Divider, Item, Label, List } from 'semantic-ui-react';
+import { ToolOverview } from '../../models';
 
 interface ComponentProps {
     tool?: ToolOverview;
 }
 
-class ToolCardComponent extends Component<ComponentProps> {
+class ToolComponent extends Component<ComponentProps> {
 
     public render(): ReactNode {
         const { tool } = this.props;
 
         if (tool) {
-            const { name, title, image, links, stateColor, stateText, statusText } = tool;
+            const { name, title, image, description, links, stateColor, stateText, statusText } = tool;
 
             return (
-                <Card>
-                    <Image src={image} wrapped ui={false} />
-                    <Card.Content>
-                        <Label color={stateColor} ribbon='right'>{stateText}</Label>
-                        <Card.Header>{title}</Card.Header>
-                        <Divider />
-                        <Card.Meta>
-                            <div>Container Name: {name}</div>
-                            <div>Container Status: {statusText}</div>
-                        </Card.Meta>
-                        <Divider />
-                        <Card.Description>
-                            <List>
-                                {
-                                    links.map((link, index) => {
-                                        const { href, external, label, title } = link;
-                                        const labelText = label ? `${label}: ` : '';
-                                        const target = external ? '_blank' : '_self';
+                <>
+                    <Label color={stateColor} ribbon>{stateText}</Label>
+                    <Item>
+                        <Item.Image src={image} />
+                        <Item.Content>
+                            <Item.Header>{title}</Item.Header>
+                            <Item.Meta>{description}</Item.Meta>
+                            <Item.Description>
+                                <List>
+                                    <List.Item key={-2}>
+                                        <List.Content>Container Name: <b>{name}</b></List.Content>
+                                    </List.Item>
+                                    <List.Item key={-1}>
+                                        <List.Content>Container Status: <b>{statusText}</b></List.Content>
+                                    </List.Item>
+                                    <Divider />
+                                    {
+                                        links.map((link, index) => {
+                                            const { href, external, label, title } = link;
+                                            const labelText = label ? `${label}: ` : '';
+                                            const target = external ? '_blank' : '_self';
 
-                                        if (href) {
-                                            return (
-                                                <List.Item key={index}>
-                                                    <List.Content>
-                                                        {labelText}<a href={href} target={target}><b>{title}</b></a>
-                                                    </List.Content>
-                                                </List.Item>
-                                            );
-                                        } else {
-                                            return (
-                                                <List.Item key={index}>
-                                                    <List.Content>
-                                                        {labelText}<b>{title}</b>
-                                                    </List.Content>
-                                                </List.Item>
-                                            );
-                                        }
-                                    })
-                                }
-                            </List>
-                        </Card.Description>
-                    </Card.Content>
-                </Card>
+                                            if (href) {
+                                                return (
+                                                    <List.Item key={index}>
+                                                        <List.Content>
+                                                            {labelText}
+                                                            <a href={href} target={target}><b>{title}</b></a>
+                                                        </List.Content>
+                                                    </List.Item>
+                                                );
+                                            } else {
+                                                return (
+                                                    <List.Item key={index}>
+                                                        <List.Content>
+                                                            {labelText}<b>{title}</b>
+                                                        </List.Content>
+                                                    </List.Item>
+                                                );
+                                            }
+                                        })
+                                    }
+                                </List>
+                            </Item.Description>
+                        </Item.Content>
+                    </Item>
+                    <Divider />
+                </>
             );
         } else {
             return null;
@@ -65,4 +71,4 @@ class ToolCardComponent extends Component<ComponentProps> {
     }
 }
 
-export { ToolCardComponent as ToolCard };
+export { ToolComponent as Tool };

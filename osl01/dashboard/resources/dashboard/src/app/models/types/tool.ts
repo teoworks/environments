@@ -1,9 +1,10 @@
-import { SemanticCOLORS } from "semantic-ui-react";
+import { SemanticCOLORS } from 'semantic-ui-react';
 
 export interface ToolInfo {
     name: string;
     title: string;
     image: any;
+    description?: string;
     links: ToolLink[];
 }
 

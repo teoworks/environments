@@ -1,5 +1,6 @@
-import { ActionType, DockerContainer, DockerContainerAction, DockerState, EntityType, FindDockerContainer, FindDockerContainersAction, FindDockerContainersActionType } from "../../models";
-import { initialDockerState } from "../store/initial-state";
+import { ActionType, DockerContainer, DockerContainerAction, DockerState, EntityType, FindDockerContainer, FindDockerContainersAction, FindDockerContainersActionType } from '../../models';
+import { handlerError } from '../../providers/error-handler';
+import { initialDockerState } from '../store/initial-state';
 
 export const reducer = (state: DockerState = initialDockerState, action: DockerContainerAction): DockerState => {
     switch (action.type) {
@@ -35,8 +36,7 @@ const find = (state: DockerState = initialDockerState, action: FindDockerContain
 
         case FindDockerContainersActionType.ERROR: {
             const { containers } = state;
-            const { data } = action.error.response;
-            const error = { ...data, entityType: EntityType.CONTAINERS, actionType: ActionType.FIND };
+            const error = handlerError(action.error, EntityType.CONTAINERS, ActionType.FIND);
             return { ...initialDockerState, containers: containers, error: error };
         }
 
@@ -62,7 +62,7 @@ const replaceOrAppend = (containers: DockerContainer[], findDockerContainer: Fin
 const mapDockerContainer = (findDockerContainer: FindDockerContainer): DockerContainer => {
     return {
         id: findDockerContainer.Id,
-        name: findDockerContainer.Names[0].replace("/", ""),
+        names: findDockerContainer.Names.length ? findDockerContainer.Names.map(name => name.replace('/', '')) : ['unknown'],
         state: findDockerContainer.State,
         status: findDockerContainer.Status,
         image: {
