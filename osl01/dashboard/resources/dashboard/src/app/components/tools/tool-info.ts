@@ -4,6 +4,7 @@ import haproxyLogo from '../../assets/images/haproxy-logo.png';
 import jenkinsLogo from '../../assets/images/jenkins-logo.png';
 import kafkaLogo from '../../assets/images/kafka-logo.png';
 import keycloakLogo from '../../assets/images/keycloak-logo.png';
+import mysqlLogo from '../../assets/images/mysql-logo.png';
 import openLdapLogo from '../../assets/images/openldap-logo.png';
 import oracleLogo from '../../assets/images/oracle-logo.png';
 import postgresqlLogo from '../../assets/images/postgresql-logo.png';
@@ -91,6 +92,25 @@ export const toolInfoList: ToolInfo[] = [
             {
                 label: 'URL',
                 title: 'jdbc:postgresql://postgres.osl.teoworks.com:5432/[Database]'
+            }
+        ]
+    },
+    {
+        name: 'mysql',
+        title: 'MySQL Database',
+        image: mysqlLogo,
+        links: [
+            {
+                label: 'Host',
+                title: 'mysql.osl.teoworks.com'
+            },
+            {
+                label: 'Port',
+                title: '3306'
+            },
+            {
+                label: 'URL',
+                title: 'jdbc:mysql://mysql.osl.teoworks.com:3306/[Database]'
             }
         ]
     },
