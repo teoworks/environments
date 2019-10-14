@@ -11,6 +11,7 @@ services:
       - 3306:3306
     volumes:
       - mysql:/var/lib/mysql
+      - ./resources/my.cnf:/etc/mysql/my.cnf
     networks:
       - mysql
 
