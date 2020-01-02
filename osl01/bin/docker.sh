@@ -13,8 +13,10 @@ NETWORKS=(
     "mysql"
     "jenkins"
     "nexus"
+    "portainer"
    	"kafka"
     "keycloak"
+    "uaa"
 )
 
 VOLUMES=(
@@ -28,6 +30,8 @@ VOLUMES=(
     "nexus"
     "portainer"
     "kafka"
+    "keycloak"
+    "uaa"
 )
 
 NETWORK_LABEL="com.teoworks.type=network"

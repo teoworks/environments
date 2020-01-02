@@ -1,2 +1,2 @@
-# environments
+# Environments
 Provisioning files for environments
