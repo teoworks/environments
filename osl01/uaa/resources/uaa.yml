@@ -1,5 +1,5 @@
 issuer:
-  uri: http://uaa.osl.teoworks.com
+  uri: http://uaa.osl.teoworks.com/uaa
 
 encryption:
   encryption_keys:
